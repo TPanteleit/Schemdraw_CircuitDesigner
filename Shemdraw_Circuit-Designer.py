@@ -2,8 +2,31 @@
 """
 Created on Fri May 12 12:05:04 2023
 
+v1.0
+
 @author: tpantele
 """
+
+    #############################################################################################################################################
+    # ---- INFO zur Verwendung  von "CurrentLabelInline (Strompfeil)" und "CurrentLabel (Spannungspfeil)"                                       #
+    #                                                                                                                                           #
+    # +++ CurrentLabelInline (Strompfeil) +++                                                                                                   #
+    # d += elm.CurrentLabelInline(direction='out', start=True).at(V).label('$I_5$', loc = "bottom")                                             #
+    #                                                                                                                                           #
+    #     direction = "in" / "out"                      --- Richtung des Strompfeils "zur" Quelle oder "weg" von Quelle                         #
+    #     start = "True" / "False"                      --- Position des Strompfeils "links" von Quelle oder "rechts" von Quelle                #
+    #     label(loc = "top", "bottom", "left", "right") --- Position des Labels                                                                 #
+    #                                                                                                                                           #
+    #                                                                                                                                           #
+    # +++ CurrentLabel (Spannungspfeil) +++                                                                                                     #
+    # d += elm.CurrentLabel(ofst=-0.75, length=1.5, top=True, reverse=False ).at(V).label('$U_0$', loc="top")                                   #
+    #                                                                                                                                           #
+    #     ofst = 0.75                       --- Legt ein Offset des Labels fest. "0.75" ist ein guter Richtwert                                 #
+    #     length = 1.5                      --- Definiert die Länge des Pfeils. "1.5" ist ein guter Richtwert                                   #
+    #     top = "True" / "False"            --- Legt fest, ob der Spannnungspfeil "über" oder "unter" die Quelle gelegt wird                    #
+    #     reverse = "True" / False"         --- Legt fest, ob der Spannungspfeil von "rechts nach links" oder von "links nach rechts" zeigt     #
+    #############################################################################################################################################
+
 
 
 from PyQt5.QtWidgets import QDialog, QApplication, QPushButton, QLabel, QRadioButton, QComboBox, QTableWidget, QTableWidgetItem, QShortcut
