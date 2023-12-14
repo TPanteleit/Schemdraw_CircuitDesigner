@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Dialog</class>
+ <widget class="QDialog" name="Dialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>958</width>
+    <height>571</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <widget class="QDialogButtonBox" name="buttonBox">
+   <property name="geometry">
+    <rect>
+     <x>600</x>
+     <y>520</y>
+     <width>341</width>
+     <height>32</height>
+    </rect>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Horizontal</enum>
+   </property>
+   <property name="standardButtons">
+    <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_Down">
+   <property name="geometry">
+    <rect>
+     <x>80</x>
+     <y>340</y>
+     <width>51</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Down</string>
+   </property>
+   <property name="shortcut">
+    <string>Down</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_Right">
+   <property name="geometry">
+    <rect>
+     <x>140</x>
+     <y>340</y>
+     <width>51</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Right</string>
+   </property>
+   <property name="shortcut">
+    <string>Right</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_Left">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>340</y>
+     <width>51</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Left</string>
+   </property>
+   <property name="shortcut">
+    <string>Left</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_Up">
+   <property name="geometry">
+    <rect>
+     <x>80</x>
+     <y>280</y>
+     <width>51</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Up</string>
+   </property>
+   <property name="shortcut">
+    <string>Up</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_show_img">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>510</y>
+     <width>81</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>show_img</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_save_img">
+   <property name="geometry">
+    <rect>
+     <x>130</x>
+     <y>510</y>
+     <width>81</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>save_img</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_start_circuit">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>420</y>
+     <width>111</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Start new circuit</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_print">
+   <property name="geometry">
+    <rect>
+     <x>830</x>
+     <y>260</y>
+     <width>111</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Print</string>
+   </property>
+   <property name="shortcut">
+    <string>Shift+Return</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_show_elements">
+   <property name="geometry">
+    <rect>
+     <x>230</x>
+     <y>510</y>
+     <width>81</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>show elements</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_show_labels">
+   <property name="geometry">
+    <rect>
+     <x>150</x>
+     <y>420</y>
+     <width>111</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>show labels</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_undo">
+   <property name="geometry">
+    <rect>
+     <x>220</x>
+     <y>340</y>
+     <width>81</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Undo</string>
+   </property>
+   <property name="shortcut">
+    <string>Backspace</string>
+   </property>
+  </widget>
+  <widget class="QComboBox" name="comboBox_elements">
+   <property name="geometry">
+    <rect>
+     <x>170</x>
+     <y>290</y>
+     <width>151</width>
+     <height>22</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QTableWidget" name="tableWidget">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>50</y>
+     <width>921</width>
+     <height>181</height>
+    </rect>
+   </property>
+   <column>
+    <property name="text">
+     <string>Name</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>Direction</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>Color</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>voltageArrow?</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>Voltage - Direction</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>Voltage - Offset</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>currentArrow?</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>Current - Direction</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>Current - Offset</string>
+    </property>
+   </column>
+  </widget>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>accepted()</signal>
+   <receiver>Dialog</receiver>
+   <slot>accept()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>248</x>
+     <y>254</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>157</x>
+     <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>rejected()</signal>
+   <receiver>Dialog</receiver>
+   <slot>reject()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>316</x>
+     <y>260</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>286</x>
+     <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>
