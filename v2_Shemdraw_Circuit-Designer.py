@@ -368,6 +368,9 @@ class UI(QDialog):
         self.counter_q_elements = 1
         self.counter_C_elements = 1
         self.counter_L_elements = 1
+        self.counter_pot_elements = 1
+        self.counter_D_elements = 1
+ 
         
         
         
@@ -391,6 +394,7 @@ class UI(QDialog):
                 self.currentOffset = float(self.tableWidget.item(row,9).text())
                 
                 
+                #  Resistor
                 if self.element_type == "Resistor":
                     
                     self.counter_R_elements = self.counter_R_elements + 1
@@ -403,7 +407,7 @@ class UI(QDialog):
                     # Strompfeile
                     if self.currentActiv:
                         d.add(elm.CurrentLabelInline(direction=self.currentDirection, start=False, ofst=self.currentOffset).at(R).label("$Ir_"+str(self.counter_R_elements-1)+"$"))
-                 
+                # Capacitor 
                 if self.element_type == "Capacitor":
                     
                     self.counter_C_elements = self.counter_C_elements + 1
@@ -415,13 +419,13 @@ class UI(QDialog):
                         
                     # Strompfeile
                     if self.currentActiv:
-                        d.add(elm.CurrentLabelInline(direction=self.currentDirection, start=False, ofst=self.currentOffset).at(C).label("$Ic_"+str(self.counter_C_elements-1)+"$"))
+                        d.add(elm.CurrentLabelInline(direction=self.currentDirection, start=False, ofst=self.currentOffset).at(R).label("$Ic_"+str(self.counter_C_elements-1)+"$"))
                 
-                        
+                #  Inductor        
                 if self.element_type == "Inductor":
                     
                     self.counter_L_elements = self.counter_L_elements + 1
-                    d.add( L := (elm.Capacitor().theta(self.element_angle).length(self.length).color(self.color).label("$L_"+str(self.counter_L_elements-1)+"$")))
+                    d.add( L := (elm.Inductor().theta(self.element_angle).length(self.length).color(self.color).label("$L_"+str(self.counter_L_elements-1)+"$")))
                     
                     # Spannungspfeile
                     if self.voltageActiv:
@@ -431,10 +435,11 @@ class UI(QDialog):
                     if self.currentActiv:
                         d.add(elm.CurrentLabelInline(direction=self.currentDirection, start=False, ofst=self.currentOffset).at(R).label("$IL_"+str(self.counter_L_elements-1)+"$"))
                
+                # Voltage DC
                 if self.element_type == "Source: Voltage (DC)":
                     
                     self.counter_q_elements = self.counter_q_elements + 1
-                    d.add( U := (elm.Capacitor().theta(self.element_angle).length(self.length).color(self.color).label("$Uq_"+str(self.counter_q_elements-1)+"$")))
+                    d.add( U := (elm.SourceV().theta(self.element_angle).length(self.length).color(self.color).label("$Uq_"+str(self.counter_q_elements-1)+"$")))
                     
                     # Spannungspfeile
                     if self.voltageActiv:
@@ -443,11 +448,12 @@ class UI(QDialog):
                     # Strompfeile
                     if self.currentActiv:
                         d.add(elm.CurrentLabelInline(direction=self.currentDirection, start=False, ofst=self.currentOffset).at(U).label("$Iq_"+str(self.counter_q_elements-1)+"$"))
-               
+              
+                # Voltage AC
                 if self.element_type == "Source: Voltage (AC)":
                     
                     self.counter_q_elements = self.counter_q_elements + 1
-                    d.add( UA := (elm.Capacitor().theta(self.element_angle).length(self.length).color(self.color).label("$Uq_"+str(self.counter_q_elements-1)+"$")))
+                    d.add( UA := (elm.SourceSin().theta(self.element_angle).length(self.length).color(self.color).label("$Uq_"+str(self.counter_q_elements-1)+"$")))
                     
                     # Spannungspfeile
                     if self.voltageActiv:
@@ -457,11 +463,11 @@ class UI(QDialog):
                     if self.currentActiv:
                         d.add(elm.CurrentLabelInline(direction=self.currentDirection, start=False, ofst=self.currentOffset).at(UA).label("$Iq_"+str(self.counter_q_elements-1)+"$"))
                 
-                
+                #  Current DC
                 if self.element_type == "Source: Current (DC)":
                     
                     self.counter_q_elements = self.counter_q_elements + 1
-                    d.add( I := (elm.Capacitor().theta(self.element_angle).length(self.length).color(self.color).label("$Iq_"+str(self.counter_q_elements-1)+"$")))
+                    d.add( I := (elm.SourceI().theta(self.element_angle).length(self.length).color(self.color).label("$Iq_"+str(self.counter_q_elements-1)+"$")))
                     
                     # Spannungspfeile
                     if self.voltageActiv:
@@ -471,10 +477,11 @@ class UI(QDialog):
                     if self.currentActiv:
                         d.add(elm.CurrentLabelInline(direction=self.currentDirection, start=False, ofst=self.currentOffset).at(I).label("$Iq_"+str(self.counter_q_elements-1)+"$"))
                
+                # Current AC
                 if self.element_type == "Source: Current (AC)":
                     
                     self.counter_q_elements = self.counter_q_elements + 1
-                    d.add( IA := (elm.Capacitor().theta(self.element_angle).length(self.length).color(self.color).label("$Iq_"+str(self.counter_q_elements-1)+"$")))
+                    d.add( IA := (elm.SourceSin().theta(self.element_angle).length(self.length).color(self.color).label("$Iq_"+str(self.counter_q_elements-1)+"$")))
                     
                     # Spannungspfeile
                     if self.voltageActiv:
@@ -484,6 +491,47 @@ class UI(QDialog):
                     if self.currentActiv:
                         d.add(elm.CurrentLabelInline(direction=self.currentDirection, start=False, ofst=self.currentOffset).at(IA).label("$Iq_"+str(self.counter_q_elements-1)+"$"))
                
+                # Potentiometer
+                if self.element_type == "Potentiometer":
+                    
+                    self.counter_pot_elements = self.counter_pot_elements + 1
+                    d.add( POT := (elm.Potentiometer().theta(self.element_angle).length(self.length).color(self.color).label("$pot_"+str(self.counter_pot_elements-1)+"$")))
+                    
+                    # Spannungspfeile
+                    if self.voltageActiv:
+                        d.add(elm.CurrentLabel(length=1.5, reverse=self.voltageDirection, ofst=self.voltageOffset, top=False).at(POT).label("$Upot_"+str(self.counter_pot_elements-1)+"$", loc='bottom'))
+                        
+                    # Strompfeile
+                    if self.currentActiv:
+                        d.add(elm.CurrentLabelInline(direction=self.currentDirection, start=False, ofst=self.currentOffset).at(POT).label("$Ipot_"+str(self.counter_pot_elements-1)+"$"))
+                
+                #  Diode
+                if self.element_type == "Diode":
+                    
+                    self.counter_pot_elements = self.counter_pot_elements + 1
+                    d.add( D := (elm.Diode().theta(self.element_angle).length(self.length).color(self.color).label("$D_"+str(self.counter_pot_elements-1)+"$")))
+                    
+                    # Spannungspfeile
+                    if self.voltageActiv:
+                        d.add(elm.CurrentLabel(length=1.5, reverse=self.voltageDirection, ofst=self.voltageOffset, top=False).at(D).label("$Ud_"+str(self.counter_D_elements-1)+"$", loc='bottom'))
+                        
+                    # Strompfeile
+                    if self.currentActiv:
+                        d.add(elm.CurrentLabelInline(direction=self.currentDirection, start=False, ofst=self.currentOffset).at(D).label("$Id_"+str(self.counter_D_elements-1)+"$"))
+                        
+                
+                #  Dot
+                if self.element_type == "Dot":
+                    
+                    self.counter_pot_elements = self.counter_pot_elements + 1
+                    d.add( dot := (elm.Dot().theta(self.element_angle).color(self.color)))
+                
+                # Line
+                if self.element_type == "Line":
+                    
+                    self.counter_pot_elements = self.counter_pot_elements + 1
+                    d.add( l := (elm.Line().theta(self.element_angle).length(self.length).color(self.color)))
+                    
                         
             
             # Add Crosshair element at the end
